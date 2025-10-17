@@ -1,0 +1,113 @@
+/* --- PENGATURAN UMUM & FONT --- */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffdee9 0%, #b5eaff 100%);
+    color: #333;
+    /* === CSS BARU UNTUK TRANSISI === */
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* === CLASS BARU UNTUK FADE OUT === */
+body.fade-out {
+    opacity: 0;
+}
+
+/* Mengatasi masalah scroll */
+body.no-scroll { overflow: hidden; }
+body.can-scroll { overflow-y: auto; }
+
+/* === CSS BARU: TOMBOL KEMBALI === */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1050; 
+    border-radius: 50px;
+}
+
+
+/* --- HALAMAN KOTAK KADO (index.html) --- */
+.gift-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.gift-page .gift-title {
+    font-family: 'Pacifico', cursive;
+    color: #c71585;
+    font-size: clamp(2rem, 10vw, 3rem);
+}
+
+/* --- CSS BARU: PEMUTAR AUDIO --- */
+.music-player-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.music-player {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 380px; /* Lebar maksimal player */
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.music-player .music-title {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* === CSS BARU UNTUK AUDIO LOKAL === */
+.custom-audio-player {
+    width: 100%; /* Membuat player mengisi container */
+}
+
+/* Penyesuaian untuk footer agar tidak tertimpa */
+.main-page footer {
+    margin-bottom: 150px; /* Ruangnya tidak perlu sebesar video */
+}
+
+.gift-box { position: relative; width: 200px; height: 180px; margin: 50px auto; cursor: pointer; }
+.gift-box .box { width: 200px; height: 120px; background-color: #f2a2e8; position: absolute; bottom: 0; border-radius: 5px; }
+.gift-box .lid { width: 220px; height: 60px; background-color: #ff69b4; position: absolute; top: 0; left: -10px; border-radius: 5px; transition: transform 0.5s ease-in-out, top 0.5s ease-in-out; transform-origin: bottom; }
+.gift-box .ribbon { position: absolute; width: 20px; height: 100%; background-color: #ff69b4; left: 50%; transform: translateX(-50%); }
+.ribbon::before { content: ''; position: absolute; width: 100%; height: 100%; background: #ff69b4; transform: rotate(90deg); }
+.gift-box.open .lid { transform: rotateX(-120deg) translateY(-50%) translateZ(0); top: -80px; }
+
+/* Konten Kejutan */
+.surprise-content { display: none; margin-top: 40px; animation: fadeIn 1s ease-in-out; }
+.surprise-item { display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: transform 0.3s ease; text-decoration: none; color: #333; }
+.surprise-item:hover { transform: scale(1.1); color: #ff69b4; }
+.surprise-item .icon-surprise { font-size: 4em; color: #ff69b4; }
+.surprise-item span { font-size: 1rem; margin-top: 10px; font-weight: bold; }
+
+/* --- ANIMASI BUNGA BERGUGURAN --- */
+.flower-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; }
+.flower { position: absolute; font-size: 2em; top: -50px; animation: fall linear forwards; opacity: 0.7; }
+@keyframes fall { to { transform: translateY(105vh) rotate(360deg); opacity: 0; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* --- HALAMAN UCAPAN (ucapan.html) --- */
+.main-page .main-title { font-family: 'Pacifico', cursive; color: #ff69b4; font-size: clamp(2.5rem, 10vw, 3.5rem); }
+.main-page .subtitle { font-size: 1.2em; color: #555; }
+.main-page .message-card { border: none; border-left: 7px solid #ff69b4; }
+.main-page .card-title { font-weight: 700; color: #333; }
+.main-page .gallery-title { font-family: 'Pacifico', cursive; color: #333; margin-bottom: 1.5rem; font-size: 2.5rem; }
+.main-page .gallery-images img { transition: transform 0.3s ease; }
+.main-page .gallery-images img:hover { transform: scale(1.05); }
+.main-page footer .signature { font-family: 'Pacifico', cursive; font-size: 2em; color: #ff69b4; margin-top: -5px; }
